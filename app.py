@@ -9,11 +9,13 @@ clock_placeholder = st.empty()
 
 
 st.subheader("Timer")
-seconds_input = st.number_input(
-    "Set Timer (seconds):", min_value=1, value=60, step=1
-)
-start_button = st.button("Start Timer")
+col1, col2 = st.columns(2)
+with col1:
+    input_mins = st.number_input("Minutes", min_value=0, max_value=300, value=1, step=1)
+with col2:
+    input_secs = st.number_input("Seconds", min_value=0, max_value=59, value=0, step=1)
 
+start_button = st.button("Start Timer")
 
 if start_button:
     timer_placeholder = st.empty()
