@@ -19,10 +19,10 @@ secs = st.number_input("Enter Seconds", min_value=0, value=0)
 if st.button("Start Timer"):
     
     total_seconds = (mins * 60) + secs
+    timer_box = st.empty()
     for t in range(int(total_seconds), -1, -1):
             m = t // 60
             s = t % 60
             timer_box.write(f"Time left: {m:02d}:{s:02d}")
             time.sleep(1)
-
-        st.write("Time's Up!")
+            st.write("Time's Up!")
