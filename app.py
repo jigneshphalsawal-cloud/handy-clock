@@ -25,4 +25,4 @@ if st.button("Start Timer"):
             s = t % 60
             timer_box.write(f"Time left: {m:02d}:{s:02d}")
             time.sleep(1)
-            st.sucess("Time's Up!")
+            
