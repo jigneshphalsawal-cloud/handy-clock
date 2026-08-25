@@ -1,6 +1,6 @@
 # Handy Clock/Timer ⏰
 
-A web application built with Python and Streamlit that displays the live time and includes a customizable countdown timer.
+My first web application built with Python and Streamlit that displays the live time and includes a customizable countdown timer.
 
 ## Features
 * **Live Clock:** Displays current time in `HH:MM:SS` format.
