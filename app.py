@@ -1,27 +1,28 @@
-from time import strftime
-from tkinter import Label, Tk
+import time
+import streamlit as st
 
-window = Tk()
-window.title("Clock")
-window.geometry("410x210")
-window.configure(bg="black")  
-window.resizable(False, False) 
+st.set_page_config(page_title="Clock & Timer", page_icon="⏰")
 
-clock_label = Label(
-    window, bg="black", fg="white", font=("Sans Serif", 50, "bold"), relief="flat"
+st.title("Digital Clock & Timer")
+
+clock_placeholder = st.empty()
+
+
+st.subheader("Timer")
+seconds_input = st.number_input(
+    "Set Timer (seconds):", min_value=1, value=60, step=1
 )
-clock_label.place(x=20, y=20)
+start_button = st.button("Start Timer")
 
 
-def update_label():
-    
-    current_time = strftime("%H: %M: %S\n %d-%m-%Y ")
-    clock_label.configure(text=current_time)
-    clock_label.after(80, update_label)  # to update after every 80 milliseconds
-    clock_label.pack(anchor="center")
+if start_button:
+    timer_placeholder = st.empty()
+    for t in range(int(seconds_input), -1, -1):
+        mins, secs = divmod(t, 60)
+        timer_placeholder.metric("Time Remaining", f"{mins:02d}:{secs:02d}")
+        time.sleep(1)
+    st.success("Time's Up!")
 
 
-update_label()
-window.mainloop()
-
-
+current_time = time.strftime("%H:%M:%S | %d-%m-%Y")
+clock_placeholder.header(f"Current Time: {current_time}")
